@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.github",
+    "allauth.socialaccount.providers.google",
     "dashboard",
+    "google_auth",
 ]
 
 MIDDLEWARE = [
@@ -136,6 +138,7 @@ AUTHENTICATION_BACKENDS=[
     "django.contrib.auth.backends.ModelBackend",
 ]
 
+
 SOCIAL_ACCOUNT_PROVIDERS={
     'github':{
         'APP': {
@@ -146,12 +149,28 @@ SOCIAL_ACCOUNT_PROVIDERS={
             'prompt': 'consent',
         },
     },
+    'google':{
+        'APP':{
+            'client_id': env('OAUTH_GOOGLE_CLIENT_ID'),
+            'secret': env('OAUTH_GOOGLE_SECRET'),
+        },
+        'SCOPE':[
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS':{
+            'access_type': 'online',
+        },
+    },
 }
+
+SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_VERIFICATION_METHOD = "email"
-ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_USERNAME_REQUIRED = False
 
 SOCIALACCOUNT_LOGIN_ON_GET = True
 SOCIALACCOUNT_AUTO_SIGNUP = True
