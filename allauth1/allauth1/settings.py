@@ -142,8 +142,8 @@ AUTHENTICATION_BACKENDS=[
 SOCIAL_ACCOUNT_PROVIDERS={
     'github':{
         'APP': {
-            'client_id': env('OAUTH_GITHUB_CLIENT_ID'),
-            'secret': env('OAUTH_GITHUB_SECRET'),
+            'client_id': '',
+            'secret': '',
         },
         'AUTH_PARAMS' : {
             'prompt': 'consent',
@@ -151,8 +151,8 @@ SOCIAL_ACCOUNT_PROVIDERS={
     },
     'google':{
         'APP':{
-            'client_id': env('OAUTH_GOOGLE_CLIENT_ID'),
-            'secret': env('OAUTH_GOOGLE_SECRET'),
+            'client_id': '',
+            'secret': '',
         },
         'SCOPE':[
             'profile',
